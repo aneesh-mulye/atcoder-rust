@@ -1,0 +1,62 @@
+[profile.dev]
+opt-level = 3
+
+[package]
+name = "abc452"
+version = "0.1.0"
+edition = "2021"
+
+[package.metadata.cargo-compete.bin]
+abc452-a = { alias = "a", problem = "https://atcoder.jp/contests/abc452/tasks/abc452_a" }
+abc452-b = { alias = "b", problem = "https://atcoder.jp/contests/abc452/tasks/abc452_b" }
+abc452-c = { alias = "c", problem = "https://atcoder.jp/contests/abc452/tasks/abc452_c" }
+abc452-d = { alias = "d", problem = "https://atcoder.jp/contests/abc452/tasks/abc452_d" }
+abc452-e = { alias = "e", problem = "https://atcoder.jp/contests/abc452/tasks/abc452_e" }
+abc452-f = { alias = "f", problem = "https://atcoder.jp/contests/abc452/tasks/abc452_f" }
+abc452-g = { alias = "g", problem = "https://atcoder.jp/contests/abc452/tasks/abc452_g" }
+
+[[bin]]
+name = "abc452-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc452-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc452-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc452-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc452-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc452-f"
+path = "src/bin/f.rs"
+
+[[bin]]
+name = "abc452-g"
+path = "src/bin/g.rs"
+
+[dependencies]
+proconio = { version = "=0.5.0", features = ["derive"] }
+itertools = "=0.14.0"
+ac-library-rs = "=0.2.0"
+num = "=0.4.3"
+num-integer = "=0.1.46"
+num-traits = "=0.2.19"
+superslice = "=1.0.0"
+petgraph = "=0.8.2"
+indexmap = "=2.11.0"
+regex = "=1.11.2"
+rustc-hash = "=2.1.1"
+bitvec = "=1.0.1"
+counter = "=0.7.0"
+getrandom = "=0.3.3"
+
+[dev-dependencies]

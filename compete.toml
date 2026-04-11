@@ -1,0 +1,79 @@
+# Path to the test file (Liquid template)
+#
+# Variables:
+#
+# - `manifest_dir`: Package directory
+# - `contest`:      Contest ID (e.g. "abc100")
+# - `bin_name`:     Name of a `bin` target (e.g. "abc100-a")
+# - `bin_alias`:    "Alias" for a `bin` target defined in `pacakge.metadata.cargo-compete` (e.g. "a")
+# - `problem`:      Alias for `bin_alias` (deprecated)
+#
+# Additional filters:
+#
+# - `kebabcase`: Convert to kebab case (by using the `heck` crate)
+test-suite = "{{ manifest_dir }}/testcases/{{ bin_alias }}.yml"
+
+# Open files with the command (`jq` command that outputs `string[] | string[][]`)
+#
+# VSCode:
+#open = '[["code", "-a", .manifest_dir], ["code"] + (.paths | map([.src, .test_suite]) | flatten)]'
+# Emacs:
+#open = '["emacsclient", "-n"] + (.paths | map([.src, .test_suite]) | flatten)'
+
+[template]
+src = '''
+use proconio::input;
+use proconio::marker::{Chars, Usize1};
+use itertools::Itertools;
+
+fn main() {
+    todo!();
+}
+'''
+
+[template.new]
+# `edition` for `Cargo.toml`.
+edition = "2021"
+# `profile` for `Cargo.toml`.
+#
+# By setting this, you can run tests with `opt-level=3` while enabling `debug-assertions` and `overflow-checks`.
+profile = '''
+[dev]
+opt-level = 3
+'''
+dependencies = '''
+proconio = { version = "=0.5.0", features = ["derive"] }
+itertools = "=0.14.0"
+ac-library-rs = "=0.2.0"
+num = "=0.4.3"
+num-integer = "=0.1.46"
+num-traits = "=0.2.19"
+superslice = "=1.0.0"
+petgraph = "=0.8.2"
+indexmap = "=2.11.0"
+regex = "=1.11.2"
+rustc-hash = "=2.1.1"
+bitvec = "=1.0.1"
+counter = "=0.7.0"
+getrandom = "=0.3.3"
+'''
+dev-dependencies = '''
+'''
+
+[template.new.copy-files]
+
+[new]
+kind = "cargo-compete"
+# Platform
+platform = "atcoder"
+# Path (Liquid template)
+path = "./{{ contest }}"
+
+[test]
+# Profile for `cargo build`. ("dev" | "release")
+#profile = "dev"
+
+[submit]
+kind = "file"
+path = "{{ src_path }}"
+language_id = "6088"
